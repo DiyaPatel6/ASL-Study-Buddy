@@ -12,14 +12,16 @@
 <div class="buttons">
   <button id="button-start"><b>Start Camera</b></button>
   <button id="button-stop"><b>Stop Camera</b></button>
+  <ion-icon name="camera-outline" id="camera-button"></ion-icon>
 </div>
 
 <div id="video-container">
+  <video id="camera" autoplay="true"></video>
+  <canvas id="canvas" width="700" height="500" style="display: none;"></canvas>
+</div>
 
-  <video id="camera" autoplay="true">
-
-  </video>
-
+<div class="picture-display">
+<img id="captured-picture" class="captured-picture">
 </div>
 
 <div id="transcription">
@@ -27,5 +29,10 @@
   <textarea id="placeholder-text" readonly>The Transcription of ASL signs performed will appear here once the camera has been started.</textarea>
 </div>
 
+<script src="camera.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
+100
