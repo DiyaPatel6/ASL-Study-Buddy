@@ -1,15 +1,35 @@
-if (navigator.mediaDevices.getUserMedia){ 
-  navigator.mediaDevices. getUserMedia({ video: true }) //
-    .then(function (stream){
-      video.srcObject = stream; //camera live
-  })
-    .catch (function (error) {
-      console.log ("Something went wrong");
+const startButton = document.querySelector("#button-start");
+let cameraStream = null;
+
+startButton.addEventListener("click", () => {
+  if (navigator.mediaDevices.getUserMedia){ 
+    navigator.mediaDevices.getUserMedia({ video: true }) 
+      .then(function (stream){
+        cameraStream = stream;
+        video.srcObject = stream; //camera live
     })
-  }
-  else {
-  console.log("getUserMedia is not supported");
-  }
+      .catch (function (error) {
+        console.log ("Something went wrong");
+      })
+    }
+    else {
+    console.log("getUserMedia is not supported");
+    }  
+})
+
+
+const stopButton = document.querySelector("#button-stop");
+
+stopButton.addEventListener("click", () => {
+  if (cameraStream){   
+      cameraStream.stop;
+      video.srcObject = null; 
+      console.log("Camera Stopped");
+    }
+    else {
+    console.log("Camera is not on");
+    }
+})
 
 
 const video = document.querySelector("#camera");
@@ -25,7 +45,6 @@ cameraButton.addEventListener("click", () => {
 
     const c = canvas.getContext("2d"); //way to draw canvas
    
-
     c.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const imageData = canvas.toDataURL("image/jpeg");
@@ -34,3 +53,15 @@ cameraButton.addEventListener("click", () => {
 
   }, 300);
 });
+
+
+
+
+
+
+
+const trainingData = {
+  "Hello": [],
+  "Yes": [],
+  "No": []
+}
