@@ -19,11 +19,10 @@ startButton.addEventListener("click", () => {
 
 
 const stopButton = document.querySelector("#button-stop");
-
 stopButton.addEventListener("click", () => {
   if (cameraStream){   
-      cameraStream.stop;
-      video.srcObject = null; 
+    cameraStream.getTracks().forEach(track => track.stop());
+    video.srcObject = null; 
       console.log("Camera Stopped");
     }
     else {
@@ -32,36 +31,66 @@ stopButton.addEventListener("click", () => {
 })
 
 
+
+const dropdown = document.querySelector("select")
+let optionSelected = null;
+
+dropdown.addEventListener("change", () =>{
+  optionSelected = dropdown.value;
+  console.log("Selected Sign:", optionSelected);
+})
+
+
+
 const video = document.querySelector("#camera");
 const cameraButton = document.getElementById("camera-button");
 const canvas = document.getElementById("canvas");
 const capturedPicture = document.getElementById("captured-picture");
-
 cameraButton.addEventListener("click", () => {
+
+  if (!optionSelected) {
+    alert("Select a sign first");
+    return;
+  }
+
+  const framesToCapture = 20; 
+  const delay = 150; // ms between frames
+  let frameCount = 0;
+
   video.classList.add("effect");
 
-  setTimeout(() => {
-    video.classList.remove("effect");
-
-    const c = canvas.getContext("2d"); //way to draw canvas
-   
+  const captureInterval = setInterval(() => {
+    const c = canvas.getContext("2d");
     c.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const imageData = canvas.toDataURL("image/jpeg");
-    capturedPicture.src = imageData; //image will be image data
-    capturedPicture.style.display = "block"; //show image
+    trainingData[optionSelected].push(imageData);
+    downloadImage(imageData, `${optionSelected}${frameCount + 1}.jpg`);
 
-  }, 300);
+    frameCount++;
+
+    if (frameCount >= framesToCapture) {
+      clearInterval(captureInterval);
+      video.classList.remove("effect");
+      console.log(`Finished capturing ${framesToCapture} frames for ${optionSelected}`);
+    }
+
+  }, delay);
 });
 
 
-
-
-
-
-
 const trainingData = {
-  "Hello": [],
-  "Yes": [],
-  "No": []
+  "hello": [],
+  "yes": [],
+  "no": []
 }
+
+
+function downloadImage(dataURL, filename) {
+  const a = document.createElement("a");
+  a.href = dataURL;
+  a.download = filename;
+  a.click();
+}
+
+
