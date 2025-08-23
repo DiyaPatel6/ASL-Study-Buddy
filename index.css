@@ -56,47 +56,6 @@
   transform: scaleX(-1);
 }
 
-#camera-button {
-  width: 30px; 
-  font-size: 2em;
-  padding: 0.5rem; 
-  border-radius: 50%; 
-  border: 2px solid white;
-  position: absolute;
-  left: 50%;
-  top: 78%;              
-  transform: translate(-50%, -50%); 
-  background-color: transparent;
-  color: white;
-  text-align: center;
-  cursor: pointer;     
-  z-index: 2;
-}
-
-#camera-button:hover {
-  background-color: white;
-  color: black;
-}
-
-.effect{
-  opacity: 0.5;
-  transition: all 100ms ease;
-}
-
-.picture-display{
-  position: absolute;
-  right: 40px;
-  top: 150px;
-  text-align: center;
-}
-
-.captured-picture{
-  display: none;
-  width: 170px;
-  height: 100px;
-  transform: scaleX(-1);
-}
-
 #transcription{
   text-align: center;
 }
@@ -104,6 +63,8 @@
 #placeholder-text{
   color: gray;
   width: 400px;
-  height: 60px;
+  height: 45px;
   resize: none;
+  font-size: 40px;
+  text-align: center;
 }
