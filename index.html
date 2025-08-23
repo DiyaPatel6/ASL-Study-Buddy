@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ASL Study Buddy</title>
   <link rel="stylesheet" href="index.css">
-
 </head>
 <body>
   <h1 id="main-title">ASL Study Buddy</h1>
 
-  <select>
+  <select id="sign-select">
     <option value="">Choose the sign you want to train for</option>
     <option value="hello">hello</option>
     <option value="yes">yes</option>
@@ -37,16 +36,15 @@
   <textarea id="placeholder-text" readonly>The Transcription of ASL signs performed will appear here once the camera has been started.</textarea>
 </div>
 
-<script src="camera.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-
 
 <div id="webcam-container"></div>
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+
+<script src="index.js"></script>
 
 </body>
 </html>

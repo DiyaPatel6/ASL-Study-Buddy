@@ -2,17 +2,17 @@
   "modelTopology": {
     "class_name": "Sequential",
     "config": {
-      "name": "sequential_14",
+      "name": "sequential_12",
       "layers": [
         {
           "class_name": "Sequential",
           "config": {
-            "name": "sequential_11",
+            "name": "sequential_9",
             "layers": [
               {
                 "class_name": "Model",
                 "config": {
-                  "name": "model4",
+                  "name": "model3",
                   "layers": [
                     {
                       "name": "input_1",
@@ -4158,7 +4158,7 @@
                 "class_name": "GlobalAveragePooling2D",
                 "config": {
                   "data_format": "channels_last",
-                  "name": "global_average_pooling2d_GlobalAveragePooling2D4",
+                  "name": "global_average_pooling2d_GlobalAveragePooling2D3",
                   "trainable": true
                 }
               }
@@ -4168,7 +4168,7 @@
         {
           "class_name": "Sequential",
           "config": {
-            "name": "sequential_13",
+            "name": "sequential_11",
             "layers": [
               {
                 "class_name": "Dense",
