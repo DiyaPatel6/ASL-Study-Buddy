@@ -24,6 +24,9 @@ stopButton.addEventListener("click", () => {
   }
 });
 
+
+//Teachable Machine
+
 const URL = "./tm-my-image-model/";
 let model, maxPredictions;
 
